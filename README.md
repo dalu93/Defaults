@@ -1,6 +1,8 @@
 # Defaults.swift
 Easy to use UserDefaults for iOS apps.
 
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5805ce90187d20010067a129&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5805ce90187d20010067a129/build/latest)
+
 Defaults.swift is a easy-to-use generic interface built on top of `UserDefaults` in Swift.
 
 - [Features](#features)
