@@ -40,7 +40,7 @@
 		81899A7C1DB5F64500A2F22F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Sources/Defaults.swift; sourceTree = "<group>"; };
 		81899A7E1DB5F9F000A2F22F /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		81899A7F1DB5F9F000A2F22F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		81899A821DB5FC4B00A2F22F /* Defaults.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Defaults.podspec; sourceTree = "<group>"; };
+		81899A821DB5FC4B00A2F22F /* Defaults.swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Defaults.swift.podspec; sourceTree = "<group>"; };
 		81899A841DB5FF3700A2F22F /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				81899A841DB5FF3700A2F22F /* .swift-version */,
-				81899A821DB5FC4B00A2F22F /* Defaults.podspec */,
+				81899A821DB5FC4B00A2F22F /* Defaults.swift.podspec */,
 				81899A7E1DB5F9F000A2F22F /* CHANGELOG.md */,
 				81899A7F1DB5F9F000A2F22F /* README.md */,
 				81899A7B1DB5F61900A2F22F /* Sources */,
@@ -426,6 +426,7 @@
 				81899A771DB5F60A00A2F22F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81899A781DB5F60A00A2F22F /* Build configuration list for PBXNativeTarget "DefaultsTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +435,7 @@
 				81899A7A1DB5F60A00A2F22F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

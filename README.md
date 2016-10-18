@@ -1,7 +1,7 @@
-# Defaults
+# Defaults.swift
 Easy to use UserDefaults for iOS apps.
 
-Defaults is a easy-to-use generic interface built on top of `UserDefaults` in Swift.
+Defaults.swift is a easy-to-use generic interface built on top of `UserDefaults` in Swift.
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -32,9 +32,9 @@ Defaults is a easy-to-use generic interface built on top of `UserDefaults` in Sw
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.0+ is required to build Defaults 1.0.0+.
+> CocoaPods 1.1.0+ is required to build Defaults.swift 1.0.0+.
 
-To integrate Defaults into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate Defaults.swift into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -42,7 +42,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'Defaults', '~> 1.0'
+pod 'Defaults.swift', '~> 1.0'
 end
 ```
 
@@ -54,11 +54,11 @@ $ pod install
 
 ## Usage
 
-`Defaults` provides the user two different interfaces.
+`Defaults.swift` provides the user two different interfaces.
 
 ### Define the keys
 
-`Defaults` uses a structure called `DefaultKey.Name` to handle the `UserDefaults` keys.
+`Defaults.swift` uses a structure called `DefaultKey.Name` to handle the `UserDefaults` keys.
 
 ```swift
 let defaultKey = DefaultKey.Name(rawValue: "key")!
@@ -111,4 +111,4 @@ stringDefaults[defaultKey] = nil
 
 ## License
 
-Defaults is released under the MIT license. See LICENSE for details.
+Defaults.swift is released under the MIT license. See LICENSE for details.

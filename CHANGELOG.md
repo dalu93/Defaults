@@ -1,6 +1,6 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-`Defaults` adheres to [Semantic Versioning](http://semver.org/).
+`Defaults.swift` adheres to [Semantic Versioning](http://semver.org/).
 
 #### 1.x Releases
 - `1.0.x` Releases - [1.0.0](#100)
@@ -9,5 +9,5 @@ All notable changes to this project will be documented in this file.
 Released on 2016-10-14.
 
 #### Added
-- Initial release of Defaults.
+- Initial release of Defaults.swift.
 - Added by [Luca D'Alberti](https://github.com/dalu93).
