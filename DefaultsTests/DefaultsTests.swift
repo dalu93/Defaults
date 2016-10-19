@@ -11,7 +11,7 @@ import XCTest
 
 class DefaultsTests: XCTestCase {
     
-    let defaultKey = DefaultKey.Name(rawValue: "key")!
+    let defaultKey = DefaultKey<String>("key")
     var stringDefaults = Defaults<String>.standard
     
     override func setUp() {
@@ -20,7 +20,7 @@ class DefaultsTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        UserDefaults.standard.removeObject(forKey: defaultKey.rawValue)
+        UserDefaults.standard.removeObject(forKey: defaultKey.name)
         UserDefaults.standard.synchronize()
     }
     
@@ -29,9 +29,9 @@ class DefaultsTests: XCTestCase {
         
         UserDefaults.standard.set(newValue, for: defaultKey)
         
-        let storedValue = UserDefaults.standard.string(forKey: defaultKey.rawValue)
+        let storedValue = UserDefaults.standard.string(forKey: defaultKey.name)
         
-        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.rawValue) is different from \(newValue)")
+        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.name) is different from \(newValue)")
     }
     
     func testStoreNewValueWithSecondInterface() {
@@ -39,15 +39,15 @@ class DefaultsTests: XCTestCase {
         
         stringDefaults[defaultKey] = newValue
         
-        let storedValue = UserDefaults.standard.string(forKey: defaultKey.rawValue)
+        let storedValue = UserDefaults.standard.string(forKey: defaultKey.name)
         
-        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.rawValue) is different from \(newValue)")
+        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.name) is different from \(newValue)")
     }
     
     func testGetValueFirstInterface() {
         let storedValue = "fhdifhsif"
         
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.rawValue)
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
         UserDefaults.standard.synchronize()
         
         let retrievedValue: String = UserDefaults.standard.get(for: defaultKey)!
@@ -58,7 +58,7 @@ class DefaultsTests: XCTestCase {
     func testGetValueSecondInterface() {
         let storedValue = "fhdifhsif"
         
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.rawValue)
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
         UserDefaults.standard.synchronize()
         
         let retrievedValue = stringDefaults[defaultKey]!
@@ -69,7 +69,7 @@ class DefaultsTests: XCTestCase {
     func testDeleteValueFirstInterface() {
         let storedValue = "fhdifhsif"
         
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.rawValue)
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
         UserDefaults.standard.synchronize()
         
         UserDefaults.standard.set(nil, for: defaultKey)
@@ -82,7 +82,7 @@ class DefaultsTests: XCTestCase {
     func testDeleteValueSecondInterface() {
         let storedValue = "fhdifhsif"
         
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.rawValue)
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
         UserDefaults.standard.synchronize()
         
         stringDefaults[defaultKey] = nil
