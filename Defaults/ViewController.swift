@@ -22,13 +22,16 @@ class ViewController: UIViewController {
     
     func examples() {
         
-        let defaultKey = DefaultKey.Name(rawValue: "key")!
+        let defaultKey = DefaultKey<String>("key")
         
         // Get the string value for the key. The method returns an Optional
-        let storedString: String? = UserDefaults.standard.get(for: defaultKey)
+        let storedString = UserDefaults.standard.get(for: defaultKey)
         
         // Store a new value
         UserDefaults.standard.set("hello", for: defaultKey)
+        
+        // By trying to set a different type, the compiler will throw
+//        UserDefaults.standard.set(10, for: defaultKey)
         
         // Delete the value from the storage
         UserDefaults.standard.set(nil, for: defaultKey)
@@ -40,7 +43,7 @@ class ViewController: UIViewController {
         var stringDefaults = Defaults<String>.standard
         
         // Get the string value for the key. Returns an Optional
-        let storedValue = stringDefaults[defaultKey]    // storedValue is a String?
+        let storedValue = stringDefaults[defaultKey]
         
         // Store a new value
         stringDefaults[defaultKey] = "hello"

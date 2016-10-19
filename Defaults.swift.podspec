@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'Defaults.swift'
-    s.version = '1.0.0'
+    s.version = '2.0.0'
     s.license = 'MIT'
     s.summary = 'Easy to use UserDefaults for iOS apps.'
     s.homepage = 'https://github.com/dalu93/Defaults'

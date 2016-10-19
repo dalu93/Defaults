@@ -9,6 +9,7 @@ Defaults.swift is a easy-to-use generic interface built on top of `UserDefaults`
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Migration](#migration)
 - [License](#license)
 
 ## Features
@@ -60,17 +61,17 @@ $ pod install
 
 ### Define the keys
 
-`Defaults.swift` uses a structure called `DefaultKey.Name` to handle the `UserDefaults` keys.
+`Defaults.swift` uses a structure called `DefaultKey<T>` to handle the `UserDefaults` keys.
 
 ```swift
-let defaultKey = DefaultKey.Name(rawValue: "key")!
+let defaultKey = DefaultKey<String>("key")
 ```
 
 ### Retrieving a stored value
 
 ```swift
 // Get the string value for the key. The method returns an Optional
-let storedString: String? = UserDefaults.standard.get(for: defaultKey)
+let storedString = UserDefaults.standard.get(for: defaultKey)
 ```
 
 Or:
@@ -79,7 +80,7 @@ Or:
 var stringDefaults = Defaults<String>.standard
 
 // Get the string value for the key. Returns an Optional
-let storedValue = stringDefaults[defaultKey]    // storedValue is a String?
+let storedValue = stringDefaults[defaultKey]
 ```
 
 ### Storing a new value
@@ -93,6 +94,12 @@ Or:
 ```swift
 // Store a new value
 stringDefaults[defaultKey] = "hello"
+```
+
+Here is the power of `Defaults.swift`: you can store different types for the same key
+```swift
+UserDefaults.standard.set(10, for: defaultKey)  // this won't compile
+stringDefaults[defaultKey] = 10                 // this won't compile too
 ```
 
 ### Removing a value
@@ -109,6 +116,50 @@ Or:
 ```swift
 // Delete the value from the storage
 stringDefaults[defaultKey] = nil
+```
+
+## Migration
+
+### Migration from 1.x to 2.0.0
+
+#### Compile fixes
+The `DefaultKey` structure is now generic. Before you declared
+
+```swift
+let key = DefaultKey.Name(rawValue: "YOUR_KEY")!
+```
+
+Now, for a more type safety, you have to declare the type the key should hold.
+The internal struct `Name` doesn't exist anymore
+```swift
+let key = DefaultKey<String>("YOUR_KEY")
+```
+
+#### Convenience methods
+If you want to display, somehow, the key name in your code, you can replace
+
+```swift
+let key = yourDefaultKeyName.rawValue
+```
+
+to:
+```swift
+let key = yourDefaultKey.name
+```
+
+You can still compare two differents key by using the `==` operator.
+Pay attention that the application won't compile if you're going to compare two
+`DefaultKey` with different generic type. For example
+
+```swift
+let key = DefaultKey<String>("key")
+let aKey = DefaultKey<Int>("key")
+let otherKey = DefaultKey<String>("a")
+let anotherKey = key
+
+key == aKey         // this won't compile because they hold different types
+key == otherKey     // this will return false because the name is different
+key == anotherKey   // this will return true
 ```
 
 ## License
