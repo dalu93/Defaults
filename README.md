@@ -45,7 +45,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'Defaults.swift', '~> 1.0'
+pod 'Defaults.swift', '~> 2.0'
 end
 ```
 
@@ -96,7 +96,7 @@ Or:
 stringDefaults[defaultKey] = "hello"
 ```
 
-Here is the power of `Defaults.swift`: you can store different types for the same key
+Here is the power of `Defaults.swift`: you can't store different types for the same key
 ```swift
 UserDefaults.standard.set(10, for: defaultKey)  // this won't compile
 stringDefaults[defaultKey] = 10                 // this won't compile too
