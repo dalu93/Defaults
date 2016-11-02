@@ -74,15 +74,6 @@ let defaultKey = DefaultKey<String>("key")
 let storedString = UserDefaults.standard.get(for: defaultKey)
 ```
 
-Or:
-```swift
-// Create a unique String handler
-var stringDefaults = Defaults<String>.standard
-
-// Get the string value for the key. Returns an Optional
-let storedValue = stringDefaults[defaultKey]
-```
-
 ### Storing a new value
 
 ```swift
@@ -90,16 +81,9 @@ let storedValue = stringDefaults[defaultKey]
 UserDefaults.standard.set("hello", for: defaultKey)
 ```
 
-Or:
-```swift
-// Store a new value
-stringDefaults[defaultKey] = "hello"
-```
-
 Here is the power of `Defaults.swift`: you can't store different types for the same key
 ```swift
 UserDefaults.standard.set(10, for: defaultKey)  // this won't compile
-stringDefaults[defaultKey] = 10                 // this won't compile too
 ```
 
 ### Removing a value
@@ -110,12 +94,6 @@ UserDefaults.standard.set(nil, for: defaultKey)
 
 // or by calling
 UserDefaults.standard.removeValue(for: defaultKey)
-```
-
-Or:
-```swift
-// Delete the value from the storage
-stringDefaults[defaultKey] = nil
 ```
 
 ## Migration

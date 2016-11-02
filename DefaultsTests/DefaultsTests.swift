@@ -12,7 +12,6 @@ import XCTest
 class DefaultsTests: XCTestCase {
     
     let defaultKey = DefaultKey<String>("key")
-    var stringDefaults = Defaults<String>.standard
     
     override func setUp() {
         super.setUp()
@@ -34,16 +33,6 @@ class DefaultsTests: XCTestCase {
         XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.name) is different from \(newValue)")
     }
     
-    func testStoreNewValueWithSecondInterface() {
-        let newValue = "hello"
-        
-        stringDefaults[defaultKey] = newValue
-        
-        let storedValue = UserDefaults.standard.string(forKey: defaultKey.name)
-        
-        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.name) is different from \(newValue)")
-    }
-    
     func testGetValueFirstInterface() {
         let storedValue = "fhdifhsif"
         
@@ -51,17 +40,6 @@ class DefaultsTests: XCTestCase {
         UserDefaults.standard.synchronize()
         
         let retrievedValue: String = UserDefaults.standard.get(for: defaultKey)!
-        
-        XCTAssert(storedValue == retrievedValue, "The retrieved value is different than the stored one")
-    }
-    
-    func testGetValueSecondInterface() {
-        let storedValue = "fhdifhsif"
-        
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
-        UserDefaults.standard.synchronize()
-        
-        let retrievedValue = stringDefaults[defaultKey]!
         
         XCTAssert(storedValue == retrievedValue, "The retrieved value is different than the stored one")
     }
@@ -75,19 +53,6 @@ class DefaultsTests: XCTestCase {
         UserDefaults.standard.set(nil, for: defaultKey)
         
         let retrievedValue: String? = UserDefaults.standard.get(for: defaultKey)
-        
-        XCTAssert(retrievedValue == nil, "The value for the key should be deleted")
-    }
-    
-    func testDeleteValueSecondInterface() {
-        let storedValue = "fhdifhsif"
-        
-        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
-        UserDefaults.standard.synchronize()
-        
-        stringDefaults[defaultKey] = nil
-        
-        let retrievedValue = stringDefaults[defaultKey]
         
         XCTAssert(retrievedValue == nil, "The value for the key should be deleted")
     }

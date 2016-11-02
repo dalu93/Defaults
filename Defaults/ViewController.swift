@@ -38,18 +38,6 @@ class ViewController: UIViewController {
         
         // or by calling
         UserDefaults.standard.removeValue(for: defaultKey)
-        
-        // Create a unique String handler
-        var stringDefaults = Defaults<String>.standard
-        
-        // Get the string value for the key. Returns an Optional
-        let storedValue = stringDefaults[defaultKey]
-        
-        // Store a new value
-        stringDefaults[defaultKey] = "hello"
-        
-        // Delete the value from the storage
-        stringDefaults[defaultKey] = nil
     }
 }
 
