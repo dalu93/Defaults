@@ -74,7 +74,7 @@ let defaultKey = DefaultKey<String>("key")
 // Get the string value for the key. The method returns an Optional
 let storedString = UserDefaults.standard.get(for: defaultKey)
 
-// Using subscriptan
+// Using subscript
 let storedString = UserDefaults.standard[defaultKey]
 
 // Expecting a default value
