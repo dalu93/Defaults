@@ -34,6 +34,24 @@ public func ==<T>(lhs: DefaultKey<T>, rhs: DefaultKey<T>) -> Bool {
     return lhs.name == rhs.name
 }
 
+// MARK: - Generic subscripts
+public extension UserDefaults {
+    
+    public subscript<ValueType>(key: DefaultKey<ValueType>) -> ValueType? {
+        get {
+            return get(for: key)
+        }
+        
+        set {
+            set(newValue, for: key)
+        }
+    }
+    
+    public subscript<ValueType>(key: DefaultKey<ValueType>, or value: ValueType) -> ValueType {
+        return get(for: key, or: value)
+    }
+}
+
 // MARK: - UserDefaults helpers
 public extension UserDefaults {
     
@@ -43,7 +61,7 @@ public extension UserDefaults {
     ///
     /// - returns: The stored value, if there is, otherwise `nil`
     public func get<T>(for key: DefaultKey<T>) -> T? {
-        return UserDefaults.standard.value(forKey: key.name) as? T
+        return value(forKey: key.name) as? T
     }
     
     /// Get a value stored in the `standard` `UserDefaults` or a default value
@@ -53,7 +71,7 @@ public extension UserDefaults {
     ///
     /// - returns: The stored value, if there is, otherwise the default one
     public func get<T>(for key: DefaultKey<T>, or defaultValue: T) -> T {
-        return (UserDefaults.standard.value(forKey: key.name) as? T) ?? defaultValue
+        return (value(forKey: key.name) as? T) ?? defaultValue
     }
     
     /// Set a new value in the `standard` `UserDefaults`.
@@ -64,10 +82,10 @@ public extension UserDefaults {
     /// - parameter key:   The key
     public func set<T>(_ value: T?, for key: DefaultKey<T>) {
         if let value = value {
-            UserDefaults.standard.setValue(value, forKey: key.name)
-            UserDefaults.standard.synchronize()
+            setValue(value, forKey: key.name)
+            synchronize()
         } else {
-            UserDefaults.standard.removeValue(for: key)
+            removeValue(for: key)
         }
     }
     
@@ -75,7 +93,7 @@ public extension UserDefaults {
     ///
     /// - parameter key: The key
     public func removeValue<T>(for key: DefaultKey<T>) {
-        UserDefaults.standard.removeObject(forKey: key.name)
-        UserDefaults.standard.synchronize()
+        removeObject(forKey: key.name)
+        synchronize()
     }
 }

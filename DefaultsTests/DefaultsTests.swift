@@ -56,4 +56,36 @@ class DefaultsTests: XCTestCase {
         
         XCTAssert(retrievedValue == nil, "The value for the key should be deleted")
     }
+    
+    func testSetNewValueUsingSubscript() {
+        let newValue = "hello"
+        UserDefaults.standard[defaultKey] = newValue
+        
+        let storedValue = UserDefaults.standard.string(forKey: defaultKey.name) ?? ""
+        
+        XCTAssert(storedValue == newValue, "The stored value for the key \(defaultKey.name) is different from \(newValue)")
+    }
+    
+    func testGetValueUsingSubscript() {
+        let storedValue = "fhdifhsif"
+        
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
+        UserDefaults.standard.synchronize()
+        
+        let retrievedValue = UserDefaults.standard[defaultKey, or: ""]
+        XCTAssert(retrievedValue == storedValue, "The retrieved value is different than the stored one")
+    }
+    
+    func testDeleteValueUsingSubscript() {
+        let storedValue = "fhdifhsif"
+        
+        UserDefaults.standard.set(storedValue, forKey: defaultKey.name)
+        UserDefaults.standard.synchronize()
+        
+        UserDefaults.standard[defaultKey] = nil
+        
+        let retrievedValue = UserDefaults.standard[defaultKey]
+        
+        XCTAssert(retrievedValue == nil, "The value for the key should be deleted")
+    }
 }
