@@ -58,6 +58,7 @@ $ pod install
 ## Usage
 
 `Defaults.swift` provides the user two different interfaces.
+One via generic subscripts introduced in Swift 4 and the other with `set` and `get` explicit methods
 
 ### Define the keys
 
@@ -72,6 +73,14 @@ let defaultKey = DefaultKey<String>("key")
 ```swift
 // Get the string value for the key. The method returns an Optional
 let storedString = UserDefaults.standard.get(for: defaultKey)
+
+// Using subscript
+let storedString = UserDefaults.standard[defaultKey]
+
+// Expecting a default value
+let storedString = UserDefaults.standard.get(for: defaultKey, or: "Hello")
+
+let storedString = UserDefaults.standard[defaultKey, or: "Hello"]
 ```
 
 ### Storing a new value
@@ -79,11 +88,15 @@ let storedString = UserDefaults.standard.get(for: defaultKey)
 ```swift
 // Store a new value
 UserDefaults.standard.set("hello", for: defaultKey)
+
+// Using subscript
+UserDefaults.standard[defaultKey] = "hello"
 ```
 
 Here is the power of `Defaults.swift`: you can't store different types for the same key
 ```swift
 UserDefaults.standard.set(10, for: defaultKey)  // this won't compile
+UserDefaults.standard[defaultKey] = 10          // this neither
 ```
 
 ### Removing a value
@@ -91,12 +104,16 @@ UserDefaults.standard.set(10, for: defaultKey)  // this won't compile
 ```swift
 // Delete the value from the storage
 UserDefaults.standard.set(nil, for: defaultKey)
+UserDefaults.standard[defaultKey] = nil
 
 // or by calling
 UserDefaults.standard.removeValue(for: defaultKey)
 ```
 
 ## Migration
+
+### Migration from 2.x to 3.0.0
+No migration is needed for this update.
 
 ### Migration from 1.x to 2.0.0
 

@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 `Defaults.swift` adheres to [Semantic Versioning](http://semver.org/).
 
+#### 3.x Releases
+- `3.0.x` Releases - [3.0.0](#300)
+
+## [3.0.0](https://github.com/dalu93/Defaults/releases/tag/3.0.0)
+- Swift 4 enhanced support: generic subscripts.
+- Removed hardcoded `UserDefaults.standard` call to improve testability.
+Released on yyyy-mm-dd
+
 #### 2.x Releases
 - `2.0.x` Releases - [2.0.0](#200) | [2.1.0](#210)
 
