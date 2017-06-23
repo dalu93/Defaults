@@ -22,8 +22,8 @@ Defaults.swift is a easy-to-use generic interface built on top of `UserDefaults`
 ## Requirements
 
 - iOS 8.0+ / macOS 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 8.0+
-- Swift 3.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## Installation
 
@@ -45,7 +45,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'Defaults.swift', '~> 2.0'
+pod 'Defaults.swift', '~> 3.0'
 end
 ```
 
